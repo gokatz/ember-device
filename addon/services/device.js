@@ -1,5 +1,5 @@
 import Service from '@ember/service';
 
-export default Service.extend({
-  metrics: 0
-});
+export default class DeviceService extends Service {
+  metrics = 0;
+}

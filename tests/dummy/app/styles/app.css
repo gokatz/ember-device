@@ -1,0 +1,10 @@
+:root {
+  --brand-primary: #3490DC;
+}
+
+.docs-bg-brand {
+  background-color: #3490DC !important;
+}
+.docs-text-brand {
+  color: #3490DC !important;
+}
