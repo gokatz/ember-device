@@ -9,6 +9,10 @@ const Router = AddonDocsRouter.extend({
 Router.map(function() {
   docsRoute(this, function() {
     this.route('usage');
+    this.route('network');
+    this.route('savedata');
+    this.route('hardware-concurrency');
+    this.route('memory');  
     this.route('installation');
   });
   this.route('not-found', { path: '/*path' });
