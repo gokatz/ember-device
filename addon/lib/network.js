@@ -16,7 +16,7 @@
 
 let unsupported;
 
-export default function getNetworkStatus(handleNetworkChange) {
+export default function getNetworkStatus() {
 
   if ('connection' in navigator && 'effectiveType' in navigator.connection) {
     unsupported = false;
@@ -24,18 +24,6 @@ export default function getNetworkStatus(handleNetworkChange) {
     unsupported = true;
   }
 
-  let initialNetworkStatus = getStatus();
-
-  if (!unsupported) {
-    navigator.connection.addEventListener('change', () => {
-      handleNetworkChange(getStatus())
-    });
-  }
-
-  return initialNetworkStatus;
-}
-
-function getStatus() {
   return !unsupported ? {
     effectiveConnectionType: navigator.connection.effectiveType
   } : {
