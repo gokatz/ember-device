@@ -12,9 +12,31 @@ export default class DeviceService extends Service {
 
     if (!this.networkStatus.unsupported) {
       navigator.connection.addEventListener('change', () => {
+        this.saveData = getSaveDataStatus();
         this.networkStatus = getNetworkStatus();
       });
     }
+  }
+
+  @tracked
+  _saveData = getSaveDataStatus();
+
+  get saveData() {
+    return this._saveData;
+  }
+
+  set saveData(saveData) {
+    this._saveData = saveData;
+  }
+
+  @tracked
+  _networkStatus = getNetworkStatus();
+  
+  get networkStatus() {
+    return this._networkStatus;
+  }
+  set networkStatus(networkStatus) {
+    this._networkStatus = networkStatus;
   }
 
   /**
@@ -33,19 +55,6 @@ export default class DeviceService extends Service {
     return getHardwareConcurrency();
   }
 
-  get saveData() {
-    return getSaveDataStatus();
-  }
-
-  @tracked
-  _networkStatus = getNetworkStatus();
-  
-  get networkStatus() {
-    return this._networkStatus;
-  }
-  set networkStatus(networkStatus) {
-    this._networkStatus = networkStatus;
-  }
 
   get memory() {
     return getMemoryStatus();

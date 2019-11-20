@@ -1,3 +1,5 @@
 # Installation
 
-Installation content
+```
+ember install ember-adaptive-service
+```

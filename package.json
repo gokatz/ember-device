@@ -1,11 +1,11 @@
 {
   "name": "ember-adaptive-service",
   "version": "0.0.1-beta",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Deliver experiences best suited to a user's device and network constraints",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "https://github.com/gokatz/ember-adaptive-service",
   "license": "MIT",
   "author": "",
   "directories": {
@@ -62,5 +62,5 @@
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
-  "homepage": "https://gokatz.github.io/ember-adaptive-service"
+  "homepage": "https://ember-adaptive-service.netlify.com/"
 }

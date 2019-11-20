@@ -4,16 +4,16 @@
   {{#demo.example data-test-id='save-data-usage.hbs'}}
     {{!-- BEGIN-SNIPPET save-data-usage.hbs --}}
       Data Saver Mode: {{if this.device.saveData.isEnabled "ON" "OFF"}}
-      <hr>
-
       {{#if this.device.saveData.isEnabled}}
+        <!-- low-res images -->
         <img 
-          src="https://images.unsplash.com/photo-1458668383970-8ddd3927deed?ixlib=rb-1.2.1&auto=format&fit=crop&w=747&q=80" 
+          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=40&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=40" 
           style="height: 250px"
         >
       {{else}}
+        <!-- high-res images -->  
         <img 
-          src="https://images.unsplash.com/photo-1458668383970-8ddd3927deed?ixlib=rb-1.2.1&auto=format&fit=crop&w=747&q=80" 
+          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000&q=80" 
           style="height: 250px"
         >      
       {{/if}}

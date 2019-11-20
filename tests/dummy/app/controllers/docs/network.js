@@ -15,6 +15,10 @@ export default class DemoController extends Controller {
     return this.device.networkStatus.effectiveConnectionType === '2g'
   }
 
+  get is3G() {
+    return this.device.networkStatus.effectiveConnectionType === '3g'
+  }
+
   get is4G() {
     return this.device.networkStatus.effectiveConnectionType === '4g'
   }
