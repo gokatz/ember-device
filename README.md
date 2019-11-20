@@ -1,30 +1,13 @@
 ember-adaptive-service
 ==============================================================================
 
-[Short description of the addon.]
+Make it easier to target low-end devices while progressively adding high-end-only features on top. 
+Using these device and network utilities can help you give users a great experience best suited to their device and network constraints.
 
+This package was inspired by [react-adaptive-hooks](https://github.com/GoogleChromeLabs/react-adaptive-hooks/) by 
+[Google Chrome Labs Team](https://github.com/GoogleChromeLabs) and it's the wrapper around the bare JS libs to be more operable with Ember ecosystem.
 
-Compatibility
-------------------------------------------------------------------------------
-
-* Ember.js v3.4 or above
-* Ember CLI v2.13 or above
-* Node.js v8 or above
-
-
-Installation
-------------------------------------------------------------------------------
-
-```
-ember install ember-adaptive-service
-```
-
-
-Usage
-------------------------------------------------------------------------------
-
-[Longer description of how to use the addon in apps.]
-
+**Here is the [Documentation site](https://ember-adaptive-service.netlify.com/)**
 
 Contributing
 ------------------------------------------------------------------------------
