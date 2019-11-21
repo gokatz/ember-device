@@ -1,21 +1,25 @@
-# Usage: Save Data user preferences
+# Data Saver Mode
+
+{{simulator-pad 
+  handleUpdate=this.refresh 
+  isDataSaverModeOn=this.isDataSaverModeOn
+  section="savedata"
+}}
 
 {{#docs-demo as |demo|}}
-  {{#demo.example data-test-id='save-data-usage.hbs'}}
+  {{#demo.example data-test-id='save-data-usage.hbs' name="demo"}}
     {{!-- BEGIN-SNIPPET save-data-usage.hbs --}}
-      Data Saver Mode: {{if this.device.saveData.isEnabled "ON" "OFF"}}
-      {{#if this.device.saveData.isEnabled}}
-        <!-- low-res images -->
-        <img 
-          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=40&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=40" 
-          style="height: 250px"
-        >
+      <div>
+        Data Saver Mode: {{if this.isDataSaverModeOn "ON" "OFF"}}
+      </div>
+      {{#if this.isDataSaverModeOn}}
+        <ImageLoader 
+          @resolution="low"
+        />
       {{else}}
-        <!-- high-res images -->  
-        <img 
-          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000&q=80" 
-          style="height: 250px"
-        >      
+        <ImageLoader 
+          @resolution="high"
+        />
       {{/if}}
     {{!-- END-SNIPPET --}}
   {{/demo.example}}

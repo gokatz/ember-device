@@ -1,37 +1,42 @@
-# Network stats
+# Network
+
+{{simulator-pad 
+  handleUpdate=this.refresh 
+  effectiveConnectionType=this.device.networkStatus.effectiveConnectionType
+  section="network"
+}}
 
 {{#docs-demo as |demo|}}
-  {{#demo.example data-test-id='network-connection.hbs'}}
+  {{#demo.example data-test-id='network-connection.hbs' name="demo"}}
+    {{#if this.canShow}}
     {{!-- BEGIN-SNIPPET network-connection.hbs --}}
-      <div>
-        Connection Type: <b>{{this.device.networkStatus.effectiveConnectionType}}</b>
-      </div>
-      {{#if this.is2G}}
-        <!-- low-res images -->
-        <img 
-          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=40&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=40" 
-          style="height: 250px"
-        > 
-      {{else if this.is3G}} 
-        <!-- medium-res images -->  
-        <img 
-          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=200&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=200&q=80" 
-          style="height: 250px"
-        > 
-      {{else if this.is4G}} 
-        <!-- high-res images -->  
-        <img 
-          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000&q=80" 
-          style="height: 250px"
-        > 
-      {{else}}  
-        <!-- fallback to medium-res images -->  
-        <img 
-          src="https://images.unsplash.com/photo-1427847907429-d1ba99bf013d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=100" 
-          style="height: 250px"
-        > 
-      {{/if}}
+      {{#let this.device.networkStatus.effectiveConnectionType as |effectiveConnectionType|}}
+        <div>
+          Connection Type: <b>{{effectiveConnectionType}}</b>
+        </div>
+        {{#if (eq effectiveConnectionType "slow-2g")}}
+          <ImageLoader 
+            @resolution="low"
+          />
+        {{else if (eq effectiveConnectionType "2g")}}
+          <ImageLoader 
+            @resolution="mid"
+          />
+        {{else if (eq effectiveConnectionType "3g")}}
+          <ImageLoader 
+            @resolution="hight"
+          />
+        {{else if (eq effectiveConnectionType "4g")}}
+          <VideoLoader />
+        {{else}}
+          <!-- Fallback -->
+          <ImageLoader 
+            @resolution="mid"
+          />
+        {{/if}}
+      {{/let}}
     {{!-- END-SNIPPET --}}
+    {{/if}}
   {{/demo.example}}
 
   {{demo.snippet 'network-connection.hbs'}}

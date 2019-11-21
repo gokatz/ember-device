@@ -1,15 +1,13 @@
-  // BEGIN-SNIPPET memory.js
+// BEGIN-SNIPPET memory.js
 
-import Controller from '@ember/controller';
+import Controller from './base';
 import { inject as service } from '@ember/service';
 
 export default class DemoController extends Controller {
   @service
   device;
 
-  get highMemoryMachine() {
-    return this.device.memory.deviceMemory > 4;
-  }
+  deviceMemory = this.device.memory.deviceMemory;
 }
 
 // END-SNIPPET

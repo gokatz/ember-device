@@ -2,6 +2,8 @@
  * https://github.com/GoogleChromeLabs/react-adaptive-hooks/blob/master/memory/index.js
  */
 
+import navigator from "./navigator";
+
 export default function getMemoryStatus() {
   let unsupported;
   if (typeof navigator !== 'undefined' && 'deviceMemory' in navigator) {
