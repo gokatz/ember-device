@@ -1,7 +1,7 @@
-// BEGIN-SNIPPET memory.js
-
 import Controller from './base';
 import { inject as service } from '@ember/service';
+
+// BEGIN-SNIPPET memory.js
 
 export default class DemoController extends Controller {
   @service
