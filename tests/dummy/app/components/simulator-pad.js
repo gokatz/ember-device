@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import deviceMock from '../device-mock';
+// import deviceMock from '../device-mock';
 
 const SIMULATOR_MODE_STORAGE_KEY = '__eas_simulator_mode';
 
