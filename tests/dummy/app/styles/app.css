@@ -8,3 +8,30 @@
 .docs-text-brand {
   color: #3490DC !important;
 }
+
+.simulator {
+  padding: 20px;
+  background: #dcefff;
+  border-radius: 3px;
+}
+
+#example-demo {
+  height: 350px;
+}
+
+#example-demo img, #example-demo video {
+  margin-top: 20px;
+}
+
+.demo-image, .demo-video {
+  height: 250px;
+  width: 400px;
+}
+
+.demo-video {
+  object-fit: cover;
+}
+
+.AddonDocs-DocsViewer-Nav .docs-mt-8:last-child {
+  display: none;
+}

@@ -1,0 +1,53 @@
+<div class="simulator">
+  <h4>Simulator</h4>
+
+  {{#if (eq section "network")}}
+    <div class="docs-mt-2">
+      {{#each networkOptions as |option|}}
+        {{radio-button
+          tagName=""
+          option=option
+          name="network_type"
+          selectedOption=this._effectiveConnectionType
+          handleUpdate=this.updateNetwork
+        }}
+      {{/each}}
+    </div>
+  {{else if (eq section "memory")}}
+    <div class="docs-mt-2">
+      {{#each memoryOptions as |option|}}
+        {{radio-button
+          tagName=""
+          option=option
+          name="memory_type"
+          selectedOption=this._deviceMemory
+          handleUpdate=this.updateMemory
+        }}
+      {{/each}}
+    </div>
+  {{else if (eq section "savedata")}}
+    <div class="docs-mt-2">
+      {{#each saveDataOptions as |option|}}
+        {{radio-button
+          tagName=""
+          option=option
+          name="save_data"
+          selectedOption=this._isDataSaverModeOn
+          handleUpdate=this.updateSaveData
+        }}
+      {{/each}}
+    </div>
+  {{else if (eq section "hardwareconcurrency")}}
+    <div class="docs-mt-2">
+      {{#each hwcOptions as |option|}}
+        {{radio-button
+          tagName=""
+          option=option
+          name="hwc"
+          selectedOption=this._hwConcurrency
+          handleUpdate=this.updateHwConcurrency
+        }}
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

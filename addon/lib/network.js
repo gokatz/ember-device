@@ -2,6 +2,8 @@
  * https://github.com/GoogleChromeLabs/react-adaptive-hooks/blob/master/network/index.js
  */
 
+import navigator from "./navigator";
+
 let unsupported;
 
 export default function getNetworkStatus() {
