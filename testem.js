@@ -1,3 +1,5 @@
+console.log(process.env)
+
 module.exports = {
   test_page: 'tests/index.html?hidepassed',
   disable_watching: true,
@@ -11,7 +13,8 @@ module.exports = {
     Chrome: {
       ci: [
         // --no-sandbox is needed when running Chrome inside a container
-        process.env.CI ? '--no-sandbox' : null,
+        process.env.CI || process.env.GITPOD_HOST ? '--no-sandbox' : null,
+        process.env.GITPOD_HOST ? '--disable-setuid-sandbox' : null,
         '--headless',
         '--disable-dev-shm-usage',
         '--disable-software-rasterizer',
