@@ -1,5 +1,3 @@
-console.log(process.env)
-
 module.exports = {
   test_page: 'tests/index.html?hidepassed',
   disable_watching: true,
@@ -9,6 +7,9 @@ module.exports = {
   launch_in_dev: [
     'Chrome'
   ],
+  // browser_paths: {
+  //   "Chromium": "./node_modules/puppeteer/.local-chromium/linux-706915/chrome"
+  // },
   browser_args: {
     Chrome: {
       ci: [
