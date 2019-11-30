@@ -1,10 +1,15 @@
 <div class="simulator">
   <h4>
 
-    {{if isSimulatorEnabled "Simulator" "Simulator is Disabled"}}
+    {{if this.isSimulatorEnabled "Simulator" "Simulator is Disabled"}}
 
     <div class="docs-float-right">
-      <Input type="checkbox" checked={{this.isSimulatorEnabled}} id="simulator_mode" {{on "change" (fn (mut this.isSimulatorEnabled) (not this.isSimulatorEnabled))}} />
+      {{input 
+        type="checkbox" 
+        checked=this.isSimulatorEnabled
+        id="simulator_mode" 
+        onchange=(action (mut this.isSimulatorEnabled) (not this.isSimulatorEnabled))
+      }}
       <label for="simulator_mode">Enabled</label>
     </div>
   </h4>

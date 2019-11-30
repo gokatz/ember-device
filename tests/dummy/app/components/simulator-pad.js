@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 // import deviceMock from '../device-mock';
 
@@ -11,7 +10,6 @@ export default class SimulatorPad extends Component {
   @service
   device
   
-  @tracked
   simulatorMode = window.localStorage.getItem(SIMULATOR_MODE_STORAGE_KEY);
 
   get isSimulatorEnabled() {
@@ -19,7 +17,7 @@ export default class SimulatorPad extends Component {
   }
   set isSimulatorEnabled(canEnable) {
     let value = canEnable ? '1' : '0';
-    this.simulatorMode = value;
+    this.set('simulatorMode', value);
     window.localStorage.setItem(SIMULATOR_MODE_STORAGE_KEY, value);
     window.location.reload();
 
