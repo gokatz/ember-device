@@ -1,6 +1,6 @@
 {
   "name": "ember-device",
-  "version": "0.0.1-beta",
+  "version": "0.0.1-beta.1",
   "description": "Deliver experiences best suited to a user's device and network constraints",
   "keywords": [
     "ember-addon"
