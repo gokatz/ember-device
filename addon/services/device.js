@@ -21,6 +21,15 @@ export default class DeviceService extends Service {
   @tracked
   _saveData = getSaveDataStatus();
 
+  /**
+   * Return Date Saver preference of the user.
+   * 
+   * **isEnabled**: isEnabled
+   * 
+   * **unsupported**: return `true` if the device has no support for fetching the hardware details.
+   * 
+   * @type {object}
+  */
   get saveData() {
     return this._saveData;
   }
@@ -32,6 +41,15 @@ export default class DeviceService extends Service {
   @tracked
   _networkStatus = getNetworkStatus();
   
+  /**
+   * Return effectiveConnectionType
+   * 
+   * **effectiveConnectionType**: effectiveConnectionType
+   * 
+   * **unsupported**: return `true` if the device has no support for fetching the hardware details.
+   * 
+   * @type {object}
+   */
   get networkStatus() {
     return this._networkStatus;
   }
@@ -49,13 +67,28 @@ export default class DeviceService extends Service {
    * 
    * **unsupported**: return `true` if the device has no support for fetching the hardware details.
    * 
-   * @type {object [numberOfLogicalProcessors<number>, unsupported<bool>] }
+   * @type {object}
    */
   get hardwareConcurrency() {
     return getHardwareConcurrency();
   }
 
-
+  /**
+   * [Memory usage and pressure](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency)
+   * details 
+   * 
+   * **deviceMemory**: deviceMemory
+   * 
+   * **totalJSHeapSize**: totalJSHeapSize
+   * 
+   * **usedJSHeapSize**: usedJSHeapSize
+   * 
+   * **jsHeapSizeLimit**: jsHeapSizeLimit
+   * 
+   * **unsupported**: return `true` if the device has no support for fetching the hardware details.
+   * 
+   * @type {object}
+   */
   get memory() {
     return getMemoryStatus();
   }

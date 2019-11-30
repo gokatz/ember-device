@@ -2,6 +2,8 @@ import Application from '@ember/application';
 import Resolver from './resolver';
 import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
+import deviceMock from './device-mock';
+
 
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
@@ -9,14 +11,7 @@ const App = Application.extend({
   Resolver
 });
 
-window.__eas_dummy_navigator = {
-  connection: {
-    effectiveType: 'slow-2g',
-    saveData: false
-  },
-  deviceMemory: 0.5,
-  hardwareConcurrency: 2
-}
+window.__eas_dummy_navigator = deviceMock;
 
 loadInitializers(App, config.modulePrefix);
 

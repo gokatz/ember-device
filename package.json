@@ -61,7 +61,10 @@
     "node": "8.* || >= 10.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "versionCompatibility": {
+      "ember": ">2.13.0"
+    }
   },
   "homepage": "https://ember-adaptive-service.netlify.com/"
 }

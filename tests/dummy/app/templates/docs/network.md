@@ -6,6 +6,8 @@
   section="network"
 }}
 
+{{this.device.networkStatus.effectiveConnectionType}}
+
 {{#docs-demo as |demo|}}
   {{#demo.example data-test-id='network-connection.hbs' name="demo"}}
     {{#if this.canShow}}
