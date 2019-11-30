@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-adaptive-service`
+* `cd ember-device`
 * `npm install`
 
 ## Linting

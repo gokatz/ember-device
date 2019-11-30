@@ -1,11 +1,11 @@
 {
-  "name": "ember-adaptive-service",
+  "name": "ember-device",
   "version": "0.0.1-beta",
   "description": "Deliver experiences best suited to a user's device and network constraints",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "https://github.com/gokatz/ember-adaptive-service",
+  "repository": "https://github.com/gokatz/ember-device",
   "license": "MIT",
   "author": "",
   "directories": {
@@ -65,5 +65,5 @@
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
-  "homepage": "https://ember-adaptive-service.netlify.com/"
+  "homepage": "https://ember-device.netlify.com/"
 }

@@ -1,1 +1,1 @@
-export { default } from 'ember-adaptive-service/services/device';
+export { default } from 'ember-device/services/device';
