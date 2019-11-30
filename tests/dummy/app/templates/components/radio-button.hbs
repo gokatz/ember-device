@@ -1,10 +1,10 @@
 <span class="docs-mr-4">
   <input 
     type="radio"
-    id="{{name}}_{{option.id}}"
+    id={{concat name "_" option.id}}
     name={{name}}
-    checked={{if (eq selectedOption option.id) true}}
-    {{on "change" (fn this.handleUpdate option)}}
+    checked={{eq selectedOption option.id}}
+    onchange={{action this.handleUpdate option}}
   >
   <label for="{{name}}_{{option.id}}">
     {{option.label}}

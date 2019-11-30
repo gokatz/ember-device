@@ -3,7 +3,7 @@ import getHardwareConcurrency from '../lib/hardware-concurrency';
 import getSaveDataStatus from '../lib/save-data';
 import getNetworkStatus from '../lib/network';
 import getMemoryStatus from '../lib/memory';
-import { tracked } from '@glimmer/tracking';
+import { computed } from '@ember/object';
 
 export default class DeviceService extends Service {
 
@@ -12,32 +12,51 @@ export default class DeviceService extends Service {
 
     if (!this.networkStatus.unsupported) {
       navigator.connection.addEventListener('change', () => {
-        this.saveData = getSaveDataStatus();
-        this.networkStatus = getNetworkStatus();
+        this.set('_saveData', getSaveDataStatus());
+        this.set('_networkStatus', getNetworkStatus());
       });
     }
   }
 
-  @tracked
   _saveData = getSaveDataStatus();
 
+  /**
+   * Return Date Saver preference of the user.
+   * 
+   * **isEnabled**: isEnabled
+   * 
+   * **unsupported**: return `true` if the device has no support for fetching the hardware details.
+   * 
+   * @type {object}
+  */
+  @computed('_saveData.{isEnabled,unsupported}')
   get saveData() {
     return this._saveData;
   }
 
-  set saveData(saveData) {
-    this._saveData = saveData;
-  }
+  // set saveData(saveData) {
+  //   this._saveData = saveData;
+  // }
 
-  @tracked
   _networkStatus = getNetworkStatus();
   
+  /**
+   * Return effectiveConnectionType
+   * 
+   * **effectiveConnectionType**: effectiveConnectionType
+   * 
+   * **unsupported**: return `true` if the device has no support for fetching the hardware details.
+   * 
+   * @type {object}
+   */
+
+  @computed('_networkStatus.{effectiveConnectionType,unsupported}')
   get networkStatus() {
     return this._networkStatus;
   }
-  set networkStatus(networkStatus) {
-    this._networkStatus = networkStatus;
-  }
+  // set networkStatus(networkStatus) {
+  //   this._networkStatus = networkStatus;
+  // }
 
   /**
    * [Hardware concurrency](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency)
@@ -49,13 +68,28 @@ export default class DeviceService extends Service {
    * 
    * **unsupported**: return `true` if the device has no support for fetching the hardware details.
    * 
-   * @type {object [numberOfLogicalProcessors<number>, unsupported<bool>] }
+   * @type {object}
    */
   get hardwareConcurrency() {
     return getHardwareConcurrency();
   }
 
-
+  /**
+   * [Memory usage and pressure](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency)
+   * details 
+   * 
+   * **deviceMemory**: deviceMemory
+   * 
+   * **totalJSHeapSize**: totalJSHeapSize
+   * 
+   * **usedJSHeapSize**: usedJSHeapSize
+   * 
+   * **jsHeapSizeLimit**: jsHeapSizeLimit
+   * 
+   * **unsupported**: return `true` if the device has no support for fetching the hardware details.
+   * 
+   * @type {object}
+   */
   get memory() {
     return getMemoryStatus();
   }

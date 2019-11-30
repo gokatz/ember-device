@@ -1,1 +1,3 @@
-export default window.__eas_dummy_navigator || window.navigator;
+export default () => {
+  return window.__eas_dummy_navigator || window.navigator;
+}

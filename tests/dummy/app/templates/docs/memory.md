@@ -2,7 +2,7 @@
 
 {{simulator-pad 
   handleUpdate=this.refresh 
-  deviceMemory=this.deviceMemory
+  deviceMemory=this.device.memory.deviceMemory 
   section="memory"
 }}
 
