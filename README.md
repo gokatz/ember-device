@@ -5,7 +5,7 @@ Web apps are built with **rich content and powerful web experiences** these days
 
 This package will expose properties to target feature based on the user's device and enhance/gracefully degrade as the the device and network constraints are fluctuates. This will **ensure best experience for all of our users** irrespective of their device.
 
-**NOTE:** Most of the native features utilized in this package is still **Experimental** with **minimal browser support.** Hence, it is recommended to use it with proper fallbacks.
+**NOTE:** Most of the native features utilized in this package is still **Experimental** with **limited browser support.** Hence, it is recommended to use it with proper fallbacks.
 
 **Here is the [Documentation site](https://ember-adaptive-service.netlify.com/)**
 
