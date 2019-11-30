@@ -1,15 +1,35 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
-// import { tracked } from '@glimmer/tracking';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import deviceMock from '../device-mock';
+
+const SIMULATOR_MODE_STORAGE_KEY = '__eas_simulator_mode';
 
 export default class SimulatorPad extends Component {
 
   @service
   device
+  
+  @tracked
+  simulatorMode = window.localStorage.getItem(SIMULATOR_MODE_STORAGE_KEY);
+
+  get isSimulatorEnabled() {
+    return this.simulatorMode !== '0';
+  }
+  set isSimulatorEnabled(canEnable) {
+    let value = canEnable ? '1' : '0';
+    this.simulatorMode = value;
+    window.localStorage.setItem(SIMULATOR_MODE_STORAGE_KEY, value);
+    window.location.reload();
+
+    // TODO: Scope variables will be cached! Need to work on this
+    // window.__eas_dummy_navigator = canEnable ? deviceMock : null;
+  }
 
   init() {
     super.init(...arguments);
+
     this._effectiveConnectionType = this.effectiveConnectionType || '4g';
     this._deviceMemory = this.deviceMemory || '4';
     this._isDataSaverModeOn = this.isDataSaverModeOn;

@@ -11,7 +11,7 @@ const App = Application.extend({
   Resolver
 });
 
-window.__eas_dummy_navigator = deviceMock;
+window.__eas_dummy_navigator = window.localStorage.getItem('__eas_simulator_mode') !== '0' && deviceMock;
 
 loadInitializers(App, config.modulePrefix);
 

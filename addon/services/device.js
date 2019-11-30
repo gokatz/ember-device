@@ -3,7 +3,7 @@ import getHardwareConcurrency from '../lib/hardware-concurrency';
 import getSaveDataStatus from '../lib/save-data';
 import getNetworkStatus from '../lib/network';
 import getMemoryStatus from '../lib/memory';
-import { tracked } from '@glimmer/tracking';
+import { computed } from '@ember/object';
 
 export default class DeviceService extends Service {
 
@@ -12,13 +12,12 @@ export default class DeviceService extends Service {
 
     if (!this.networkStatus.unsupported) {
       navigator.connection.addEventListener('change', () => {
-        this.saveData = getSaveDataStatus();
-        this.networkStatus = getNetworkStatus();
+        this.set('_saveData', getSaveDataStatus());
+        this.set('_networkStatus', getNetworkStatus());
       });
     }
   }
 
-  @tracked
   _saveData = getSaveDataStatus();
 
   /**
@@ -30,15 +29,15 @@ export default class DeviceService extends Service {
    * 
    * @type {object}
   */
+  @computed('_saveData.{isEnabled,unsupported}')
   get saveData() {
     return this._saveData;
   }
 
-  set saveData(saveData) {
-    this._saveData = saveData;
-  }
+  // set saveData(saveData) {
+  //   this._saveData = saveData;
+  // }
 
-  @tracked
   _networkStatus = getNetworkStatus();
   
   /**
@@ -50,12 +49,14 @@ export default class DeviceService extends Service {
    * 
    * @type {object}
    */
+
+  @computed('_networkStatus.{effectiveConnectionType,unsupported}')
   get networkStatus() {
     return this._networkStatus;
   }
-  set networkStatus(networkStatus) {
-    this._networkStatus = networkStatus;
-  }
+  // set networkStatus(networkStatus) {
+  //   this._networkStatus = networkStatus;
+  // }
 
   /**
    * [Hardware concurrency](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency)
