@@ -1,4 +1,4 @@
-# Ember Adaptive Service
+# Ember Device
 
 {{index-content}}
 

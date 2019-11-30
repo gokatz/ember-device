@@ -1,7 +1,7 @@
 # Installation
 
 ```
-ember install ember-adaptive-service
+ember install ember-device
 ```
 
 ## Compatibility
