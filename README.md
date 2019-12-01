@@ -1,4 +1,4 @@
-ember-device
+ember-device 📱
 ==============================================================================
 
 [![Build Status](https://travis-ci.org/gokatz/ember-device.svg?branch=master)](https://travis-ci.org/gokatz/ember-device)
