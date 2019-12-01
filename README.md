@@ -1,6 +1,8 @@
 ember-device
 ==============================================================================
 
+[![Build Status](https://travis-ci.org/gokatz/ember-device.svg?branch=master)](https://travis-ci.org/gokatz/ember-device)
+
 Web apps are built with **rich content and powerful web experiences** these days utilizing the possible device resources. These rich features will lead to better user experiences in high-end devices with sophisticated network bandwidth. However, in mid and low range devices like feature phones, **the resource might not be sufficient to drive** all the content of our website. Thus it'll smart to target the low-end device with a minimal and usable feature set and progressively add rich experience as the device and the related metrics become sophisticated.
 
 This package will expose properties to target feature based on the user's device and enhance/gracefully degrade as the the device and network constraints are fluctuates. This will **ensure best experience for all of our users** irrespective of their device.
