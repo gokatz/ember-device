@@ -1,6 +1,6 @@
 {
   "name": "ember-device",
-  "version": "0.0.1-beta.2",
+  "version": "0.0.1-beta.3",
   "description": "Optimize your Ember apps based on the user's device and network constraints. #BuildForAll",
   "keywords": [
     "ember-addon"
