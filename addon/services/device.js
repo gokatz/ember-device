@@ -12,13 +12,16 @@ export default class DeviceService extends Service {
     super(...arguments);
 
     if (!this.networkStatus.unsupported) {
-      navigator.connection.addEventListener('change', () => {
-        run(() => {
-          this.set('_saveData', getSaveDataStatus());
-          this.set('_networkStatus', getNetworkStatus());
-        });
-      });
+      this._handleConnectionChange = this.handleConnectionChange.bind(this);
+      navigator.connection.addEventListener('change', this._handleConnectionChange);
     }
+  }
+
+  handleConnectionChange() {
+    run(() => {
+      this.set('_saveData', getSaveDataStatus());
+      this.set('_networkStatus', getNetworkStatus());
+    });
   }
 
   _saveData = getSaveDataStatus();
@@ -101,5 +104,9 @@ export default class DeviceService extends Service {
   @computed('_memory.{deviceMemory,totalJSHeapSize,usedJSHeapSize,jsHeapSizeLimit,unsupported}')
   get memory() {
     return this._memory;
+  }
+
+  willDestroy() {
+    navigator.connection.removeEventListener('change', this._handleConnectionChange);
   }
 }
