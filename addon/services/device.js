@@ -4,7 +4,6 @@ import getSaveDataStatus from '../lib/save-data';
 import getNetworkStatus from '../lib/network';
 import getMemoryStatus from '../lib/memory';
 import { computed } from '@ember/object';
-import { run } from '@ember/runloop';
 
 export default class DeviceService extends Service {
 
@@ -18,10 +17,8 @@ export default class DeviceService extends Service {
   }
 
   handleConnectionChange() {
-    run(() => {
-      this.set('_saveData', getSaveDataStatus());
-      this.set('_networkStatus', getNetworkStatus());
-    });
+    this.set('_saveData', getSaveDataStatus());
+    this.set('_networkStatus', getNetworkStatus());
   }
 
   _saveData = getSaveDataStatus();
