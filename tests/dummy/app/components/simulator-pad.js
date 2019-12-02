@@ -1,37 +1,14 @@
 import Component from '@ember/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-// import deviceMock from '../device-mock';
-
-const SIMULATOR_MODE_STORAGE_KEY = '__eas_simulator_mode';
 
 export default class SimulatorPad extends Component {
 
   @service
   device
   
-  simulatorMode = window.localStorage.getItem(SIMULATOR_MODE_STORAGE_KEY);
-
-  get isSimulatorEnabled() {
-    return this.simulatorMode !== '0';
-  }
-  set isSimulatorEnabled(canEnable) {
-    let value = canEnable ? '1' : '0';
-    this.set('simulatorMode', value);
-    window.localStorage.setItem(SIMULATOR_MODE_STORAGE_KEY, value);
-    window.location.reload();
-
-    // TODO: Scope variables will be cached! Need to work on this
-    // window.__eas_dummy_navigator = canEnable ? deviceMock : null;
-  }
-
   init() {
     super.init(...arguments);
-
-    this._effectiveConnectionType = this.effectiveConnectionType || '4g';
-    this._deviceMemory = this.deviceMemory || '4';
-    this._isDataSaverModeOn = this.isDataSaverModeOn;
-    this._hwConcurrency = this.hwConcurrency;
 
     this.networkOptions = [{
       label: 'Slow 2G',
@@ -87,37 +64,51 @@ export default class SimulatorPad extends Component {
     }];
   }
 
+  @computed('effectiveConnectionType')
+  get _effectiveConnectionType() {
+    return this.effectiveConnectionType || '4g';
+  }
+
+  @computed('deviceMemory')
+  get _deviceMemory() {
+    return this.deviceMemory || '4';
+  }
+
+  @computed('isDataSaverModeOn')
+  get _isDataSaverModeOn() {
+    return this.isDataSaverModeOn;
+  }
+
+  @computed('hwConcurrency')
+  get _hwConcurrency() {
+    return this.hwConcurrency;
+  }
+
   @action
   updateNetwork({ id: networkType } = {}) {
-    this.set('_effectiveConnectionType', networkType);
-    window.__eas_dummy_navigator.connection.effectiveType = networkType;
-    this.device.set('networkStatus', {
+    this.device.set('_networkStatus', {
       effectiveConnectionType: networkType
     });
-    this.handleUpdate();
   }
 
   @action
   updateSaveData({ id: dataSaverMode } = {}) {
-    this.set('_isDataSaverModeOn', dataSaverMode);
-    window.__eas_dummy_navigator.connection.saveData = dataSaverMode;
-    this.device.set('saveData', {
+    this.device.set('_saveData', {
       isEnabled: dataSaverMode
     });
-    this.handleUpdate();
   }
 
   @action
   updateMemory({ id: memory } = {}) {
-    this.set('_deviceMemory', memory);
-    window.__eas_dummy_navigator.deviceMemory = memory;
-    this.handleUpdate();
+    this.device.set('_memory', {
+      deviceMemory: memory
+    });
   }  
   
   @action
   updateHwConcurrency({ id: hwc } = {}) {
-    this.set('_hwConcurrency', hwc);
-    window.__eas_dummy_navigator.hardwareConcurrency = hwc;
-    this.handleUpdate();
+    this.device.set('_hardwareConcurrency', {
+      numberOfLogicalProcessors: hwc
+    });
   }  
 } 

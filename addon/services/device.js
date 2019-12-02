@@ -58,6 +58,8 @@ export default class DeviceService extends Service {
   //   this._networkStatus = networkStatus;
   // }
 
+  _hardwareConcurrency = getHardwareConcurrency();
+
   /**
    * [Hardware concurrency](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency)
    * returns the number of logical processors available to run threads on the user's computer. Thus we can scale up/down the
@@ -70,9 +72,12 @@ export default class DeviceService extends Service {
    * 
    * @type {object}
    */
+  @computed('_hardwareConcurrency.{numberOfLogicalProcessors,unsupported}')
   get hardwareConcurrency() {
-    return getHardwareConcurrency();
+    return this._hardwareConcurrency;
   }
+
+  _memory = getMemoryStatus();
 
   /**
    * [Memory usage and pressure](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency)
@@ -90,7 +95,8 @@ export default class DeviceService extends Service {
    * 
    * @type {object}
    */
+  @computed('_memory.{deviceMemory,totalJSHeapSize,usedJSHeapSize,jsHeapSizeLimit,unsupported}')
   get memory() {
-    return getMemoryStatus();
+    return this._memory;
   }
 }

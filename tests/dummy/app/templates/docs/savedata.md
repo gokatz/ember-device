@@ -1,7 +1,6 @@
 # Data Saver Mode
 
 {{simulator-pad 
-  handleUpdate=this.refresh 
   isDataSaverModeOn=this.device.saveData.isEnabled
   section="savedata"
 }}
